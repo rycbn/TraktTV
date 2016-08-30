@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol TrendingListDataManagerDelegate {
     func foundAll(data: [TrendingMovie])
@@ -20,24 +19,11 @@ class TrendingListDataManager {
     var lists = [TrendingMovie]()
     
     func loadTrendingMovie() {
-        let parameters = [Parameter.Key.extended: Parameter.Value.extended]
-        let urlString = APIKeys.baseUrl + Methods.Movie.trending
-        let headers = [
-            HTTPHeader.Key.contentType: HTTPHeader.Value.contentType,
-            HTTPHeader.Key.apiVersion: HTTPHeader.Value.apiVersion,
-            HTTPHeader.Key.apiKey: HTTPHeader.Value.apiKey
-        ]
-        
-        Alamofire.request(.GET, urlString, parameters: parameters, headers: headers).responseJSON { (response) in
-            if let _ = response.result.error {
-                self.delegate?.ApiError()
-            }
-            if let results = response.result.value as? [AnyObject] {
-                self.populateTrendingMovieFromJSON(results)
-            } else {
-                self.delegate?.ApiError()
-            }
-        }
+        NetworkManager.getTrendingMoviesFromAPI({ [weak self] (results) in
+            self?.populateTrendingMovieFromJSON(results)
+            }, failure: { _ in
+            self.delegate?.ApiError()
+        })
     }
     
     func populateTrendingMovieFromJSON(results: [AnyObject]) {

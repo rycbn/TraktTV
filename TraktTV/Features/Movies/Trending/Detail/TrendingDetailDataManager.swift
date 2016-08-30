@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol TrendingDetailDataManagerDelegate {
     func foundAll(cast: [TrendingCast], crew: [TrendingCrew])
@@ -21,25 +20,11 @@ class TrendingDetailDataManager {
     var crewLists = [TrendingCrew]()
 
     func loadMovieCastCrew(slug: String) {
-        let parameters = [Parameter.Key.extended: Parameter.Value.extended]
-        let methods = subtituteKeyInMethod(Methods.Movie.people, key: URLKeys.slugID, value: slug)
-        let urlString = APIKeys.baseUrl + methods
-        let headers = [
-            HTTPHeader.Key.contentType: HTTPHeader.Value.contentType,
-            HTTPHeader.Key.apiVersion: HTTPHeader.Value.apiVersion,
-            HTTPHeader.Key.apiKey: HTTPHeader.Value.apiKey
-        ]
-
-        Alamofire.request(.GET, urlString, parameters: parameters, headers: headers).responseJSON { (response) in
-            if let _ = response.result.error {
-                self.delegate?.ApiError()
-            }
-            if let results = response.result.value as? [String: AnyObject] {
-                self.populateMovieCastCrewFromJSON(results)
-            } else {
-                self.delegate?.ApiError()
-            }
-        }
+        NetworkManager.getCastAndCrewFromAPI(slug, success: { [weak self] (results) in
+            self?.populateMovieCastCrewFromJSON(results)
+            }, failure: { _ in
+            self.delegate?.ApiError()
+        })
     }
 
     func populateMovieCastCrewFromJSON(results: [String: AnyObject]) {
