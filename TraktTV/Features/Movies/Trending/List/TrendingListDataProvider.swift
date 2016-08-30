@@ -108,9 +108,10 @@ extension TrendingListDataProvider: UICollectionViewDelegate {
             }
 
             let storyboard = UIStoryboard(name: Identifier.main, bundle: NSBundle.mainBundle())
-            let presentViewControler = storyboard.instantiateViewControllerWithIdentifier(Identifier.trendingDetailStoryboardID) as! TrendingDetailViewController
-            presentViewControler.model = model
-            navigationController?.presentViewController(presentViewControler, animated: true, completion: nil)
+            let viewControler = storyboard.instantiateViewControllerWithIdentifier(Identifier.trendingDetailStoryboardID) as! TrendingDetailViewController
+            viewControler.model = model
+            //navigationController?.presentViewController(viewControler, animated: true, completion: nil)
+            navigationController?.pushViewController(viewControler, animated: true)
         }
     }
 }

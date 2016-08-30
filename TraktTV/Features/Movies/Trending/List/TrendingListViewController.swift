@@ -65,6 +65,7 @@ extension TrendingListViewController {
     }
 
     func displayNoContentView() {
+        navigationItem.rightBarButtonItem?.enabled = true
         self.title = Translation.noInternetService
         view = noContentView
     }
@@ -83,6 +84,7 @@ extension TrendingListViewController: TrendingListDataManagerDelegate {
 
     func foundAll(data: [TrendingMovie]) {
         navigationItem.rightBarButtonItem?.enabled = true
+        navigationController?.hidesBarsOnSwipe = true
         displayCollectionView()
         trendingListDataProvider?.trendingListDataManager = trendingListDataManager
         trendingListDataProvider?.trendingListDataManager?.lists = data
