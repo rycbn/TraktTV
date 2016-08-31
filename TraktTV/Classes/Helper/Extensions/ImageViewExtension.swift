@@ -7,16 +7,11 @@
 //
 
 import UIKit
-import Alamofire
 
 extension UIImageView {
     public func imageFromUrl(urlString: String) {
-        Alamofire.request(.GET, urlString).responseData { (response) in
-            guard let data = response.data else { return }
-            guard let image = UIImage(data: data) else { return }
-            dispatch_async(dispatch_get_main_queue()) { [weak self] in
-                self?.image = image.decompressedImage
-            }
+        NetworkManager.getImageFromUrl(urlString) { [weak self] (image) in
+            self?.image = image.decompressedImage
         }
     }
 }

@@ -54,4 +54,14 @@ class NetworkManager {
             }
         }
     }
+
+    class func getImageFromUrl(urlString: String, success: (UIImage -> Void)) {
+        Alamofire.request(.GET, urlString).responseData { (response) in
+            guard let data = response.data else { return }
+            guard let image = UIImage(data: data) else { return }
+            dispatch_async(dispatch_get_main_queue()) {
+                success(image)
+            }
+        }
+    }
 }
