@@ -17,4 +17,5 @@ class Movie {
     var genres: [String]?
     var thumb: String?
     var poster: String?
+    var trailer: String?
 }

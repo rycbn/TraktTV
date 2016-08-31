@@ -24,3 +24,10 @@ struct Colour {
 struct ImageName {
     static let photoPlaceholder = "photoPlaceholder"
 }
+
+struct FontNameAvenirNext {
+    static let bold = "AvenirNext-Bold"
+    static let demiBold = "AvenirNext-DemiBold"
+    static let medium = "AvenirNext-Medium"
+    static let regular = "AvenirNext-Regular"
+}

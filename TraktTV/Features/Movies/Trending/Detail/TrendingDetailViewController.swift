@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class TrendingDetailViewController: UITableViewController {
 
     lazy var trendingDetailDataManager = TrendingDetailDataManager()
-
     var model: TrendingMovie!
 
     @IBOutlet weak var ratingImageView: UIImageView!
-    @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var trendingDetailDataProvider: TrendingDetailDataProvider!
+    @IBOutlet weak var ratingView: UIView!
+    @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var posterImageView: UIImageView! {
         didSet {
             posterImageView?.imageFromUrl(self.model.poster)
@@ -39,10 +41,7 @@ class TrendingDetailViewController: UITableViewController {
             genresTextLabel?.text = self.model.formattedGenres.capitalizedString
         }
     }
-    @IBAction func dismiss(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = trendingDetailDataProvider

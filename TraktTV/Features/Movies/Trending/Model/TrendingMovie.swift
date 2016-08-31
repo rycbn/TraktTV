@@ -18,10 +18,11 @@ class TrendingMovie {
     let genres: [String]
     let thumb: String
     let poster: String
+    let trailer: String?
     var task: NSURLSessionTask?
     var image: UIImage?
 
-    init(title: String, slug: String, tagline: String, overview: String, rating: NSNumber, genres: [String], thumb: String, poster: String) {
+    init(title: String, slug: String, tagline: String, overview: String, rating: NSNumber, genres: [String], thumb: String, poster: String, trailer: String? = nil) {
         self.title = title
         self.slug = slug
         self.tagline = tagline
@@ -30,6 +31,7 @@ class TrendingMovie {
         self.genres = genres
         self.thumb = thumb
         self.poster = poster
+        self.trailer = trailer
     }
 }
 extension TrendingMovie {

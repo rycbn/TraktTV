@@ -39,6 +39,7 @@ class TrendingListDataManager {
             movie.genres = result.valueForKeyPath(JSONResponseKeys.Movie.genres) as? [String]
             movie.thumb = result.valueForKeyPath(JSONResponseKeys.Movie.Images.thumb) as? String
             movie.poster = result.valueForKeyPath(JSONResponseKeys.Movie.Images.poster) as? String
+            movie.trailer = result.valueForKeyPath(JSONResponseKeys.Movie.trailer) as? String
             movies.append(movie)
         }
 

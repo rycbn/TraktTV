@@ -20,6 +20,6 @@ struct MovieParser: Mapping {
             poster = element.poster else {
                 fatalError("Error when parsing elements")
         }
-        return TrendingMovie(title: title, slug: slug, tagline: tagline, overview: overview, rating: rating, genres: genres, thumb: thumb, poster: poster)
+        return TrendingMovie(title: title, slug: slug, tagline: tagline, overview: overview, rating: rating, genres: genres, thumb: thumb, poster: poster, trailer: element.trailer)
     }
 }
