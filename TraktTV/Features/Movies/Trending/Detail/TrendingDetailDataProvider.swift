@@ -98,6 +98,7 @@ extension TrendingDetailDataProvider: UITableViewDelegate {
                     if itemCast.task == nil {
                         cell.configureHeadshotImageView(nil)
                         itemCast.task = self.downloader.download(headshot) { [weak self] url in
+                            NetworkManager.networkActivityIndicatorVisible()
                             itemCast.task = nil
                             if url == nil { return }
                             guard let data = NSData(contentsOfURL: url) else {return}
@@ -105,6 +106,7 @@ extension TrendingDetailDataProvider: UITableViewDelegate {
                             itemCast.image = image
                             dispatch_async(dispatch_get_main_queue()) {
                                 self?.tableView?.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                                NetworkManager.networkActivityIndicatorNotVisible()
                             }
                         }
                     }
