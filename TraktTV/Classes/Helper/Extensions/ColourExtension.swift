@@ -20,11 +20,11 @@ extension UIColor {
     class func colorFromHexRGB (hex:String) -> UIColor {
         var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
 
-        if (cString.hasPrefix("#")) {
+        if cString.hasPrefix("#") {
             cString = (cString as NSString).substringFromIndex(1)
         }
 
-        if (cString.characters.count != 6) {
+        if cString.characters.count != 6 {
             return UIColor.grayColor()
         }
 

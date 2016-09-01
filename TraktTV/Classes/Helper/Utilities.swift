@@ -29,7 +29,9 @@ func isReachacbleToInternet() -> Bool {
 
     var flags = SCNetworkReachabilityFlags()
 
-    if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) { return false }
+    if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+        return false
+    }
 
     let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
     let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
