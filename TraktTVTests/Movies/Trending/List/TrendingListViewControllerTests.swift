@@ -25,6 +25,12 @@ class TrendingListViewControllerTests: XCTestCase {
     func test_ViewControllerNotNil() {
         XCTAssertNotNil(sut.view)
     }
+    func test_HasApiErrorView() {
+        XCTAssertNotNil(sut.apiErrorView)
+    }
+    func test_HasOfflineView() {
+        XCTAssertNotNil(sut.offlineView)
+    }
     func test_HasNoContentView() {
         XCTAssertNotNil(sut.noContentView)
     }
@@ -33,5 +39,8 @@ class TrendingListViewControllerTests: XCTestCase {
     }
     func test_HasCollectionView() {
         XCTAssertNotNil(sut.collectionView)
+    }
+    func test_HasDataProvider() {
+        XCTAssertNotNil(sut.trendingListDataProvider)
     }
 }

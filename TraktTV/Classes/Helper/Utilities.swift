@@ -9,6 +9,7 @@
 import UIKit
 import CoreTelephony
 import SystemConfiguration
+import Alamofire
 
 func hasCellularCoverage() -> Bool {
     let carrier = CTCarrier()

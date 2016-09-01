@@ -12,6 +12,8 @@ class TrendingListViewController: UIViewController {
 
     lazy var trendingListDataManager = TrendingListDataManager()
 
+    @IBOutlet weak var apiErrorView: UIView!
+    @IBOutlet weak var offlineView: UIView!
     @IBOutlet weak var noContentView: UIView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -37,40 +39,44 @@ extension TrendingListViewController {
         if isNetworkReachableOrHasCellularCoverage() {
             loadingTrendingMovies()
         } else {
-            displayNetworkAlert()
-            if trendingListDataManager.lists.count == 0 {
-                displayNoContentView()
-            }
+            displayOfflineView()
         }
     }
 
     func loadingTrendingMovies() {
-        navigationItem.rightBarButtonItem?.enabled = false
+        NetworkManager.networkActivityIndicatorVisible()
         displayLoadingView()
         trendingListDataManager.delegate = self
         trendingListDataManager.loadTrendingMovie()
     }
 
-    func displayNetworkAlert() {
-        displayAlertWithTitle(Translation.networkErrorTitle, message: Translation.networkErrorMessage, viewController: self)
+    func displayOfflineView() {
+        navigationItem.rightBarButtonItem?.enabled = true
+        self.title = Translation.noNetworkConnection
+        view = offlineView
     }
 
-    func displayApiAlert() {
-        displayAlertWithTitle(Translation.apiErrorTitle, message: Translation.apiErrorMessage, viewController: self)
+    func displayApiErrorView() {
+        navigationItem.rightBarButtonItem?.enabled = true
+        self.title = Translation.apiErrorTitle
+        view = apiErrorView
     }
 
     func displayLoadingView() {
+        navigationItem.rightBarButtonItem?.enabled = false
         self.title = Translation.loading
         view = loadingView
     }
 
     func displayNoContentView() {
         navigationItem.rightBarButtonItem?.enabled = true
-        self.title = Translation.noInternetService
+        self.title = Translation.informationNotFound
         view = noContentView
     }
 
     func displayCollectionView() {
+        navigationItem.rightBarButtonItem?.enabled = true
+        navigationController?.hidesBarsOnSwipe = true
         self.title = Translation.trendingMovie
         view = collectionView
         collectionView.backgroundColor = UIColor.clearColor()
@@ -83,17 +89,19 @@ extension TrendingListViewController {
 extension TrendingListViewController: TrendingListDataManagerDelegate {
 
     func foundAll(data: [TrendingMovie]) {
-        navigationItem.rightBarButtonItem?.enabled = true
-        navigationController?.hidesBarsOnSwipe = true
-        displayCollectionView()
-        trendingListDataProvider?.trendingListDataManager = trendingListDataManager
-        trendingListDataProvider?.trendingListDataManager?.lists = data
-        trendingListDataProvider?.navigationController = navigationController
-        collectionView.reloadData()
+        if data.count == 0 {
+            displayNoContentView()
+        } else {
+            displayCollectionView()
+            trendingListDataProvider?.trendingListDataManager = trendingListDataManager
+            trendingListDataProvider?.trendingListDataManager?.lists = data
+            trendingListDataProvider?.navigationController = navigationController
+            collectionView.reloadData()
+        }
+        NetworkManager.networkActivityIndicatorNotVisible()
     }
     
     func ApiError() {
-        displayApiAlert()
-        displayNoContentView()
+        displayApiErrorView()
     }
 }

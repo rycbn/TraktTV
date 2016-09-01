@@ -17,13 +17,62 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="apiErrorView" destination="YZE-qE-ibh" id="oP1-Vp-OIX"/>
                         <outlet property="collectionView" destination="aFs-XB-6bJ" id="4S7-vw-emP"/>
                         <outlet property="loadingView" destination="dUL-bg-Yo2" id="yoR-0t-aye"/>
                         <outlet property="noContentView" destination="kLa-BF-OXf" id="1w5-cW-59d"/>
+                        <outlet property="offlineView" destination="tp3-ip-D3V" id="Jsg-2K-iop"/>
                         <outlet property="trendingListDataProvider" destination="i1h-eI-3I5" id="Ejs-fX-VKQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Dd-ag-4ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="YZE-qE-ibh">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="API Connection issue, please try again shortly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwy-w2-iAl">
+                            <rect key="frame" x="8" y="288" width="584" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="dwy-w2-iAl" firstAttribute="centerY" secondItem="YZE-qE-ibh" secondAttribute="centerY" id="BOI-MA-m4k"/>
+                        <constraint firstAttribute="trailing" secondItem="dwy-w2-iAl" secondAttribute="trailing" constant="8" id="XSC-Fq-2Km"/>
+                        <constraint firstItem="dwy-w2-iAl" firstAttribute="leading" secondItem="YZE-qE-ibh" secondAttribute="leading" constant="8" id="eaV-Qk-NDJ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="tp3-ip-D3V">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are offline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGM-6t-mi0">
+                            <rect key="frame" x="221" y="270" width="158" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="8d3-t4-Crc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect to the internet, then give it another go" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFf-Xg-eAK">
+                            <rect key="frame" x="8" y="308" width="584" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="OGM-6t-mi0" firstAttribute="centerX" secondItem="tp3-ip-D3V" secondAttribute="centerX" id="EhL-VL-d6a"/>
+                        <constraint firstItem="fFf-Xg-eAK" firstAttribute="centerY" secondItem="tp3-ip-D3V" secondAttribute="centerY" constant="20" id="fQi-AV-Gej"/>
+                        <constraint firstAttribute="trailing" secondItem="fFf-Xg-eAK" secondAttribute="trailing" constant="8" id="jeL-CE-Dv6"/>
+                        <constraint firstAttribute="centerY" secondItem="OGM-6t-mi0" secondAttribute="centerY" constant="15" id="kDg-v3-HRn"/>
+                        <constraint firstItem="fFf-Xg-eAK" firstAttribute="leading" secondItem="tp3-ip-D3V" secondAttribute="leading" constant="8" id="tB2-ta-KFi"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" id="dUL-bg-Yo2">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -43,16 +92,20 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, no data avaliable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAS-dW-FbQ">
-                            <rect key="frame" x="160" y="282" width="281" height="36"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="26"/>
-                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="8" y="285" width="584" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="dn0-OW-pCJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="xAS-dW-FbQ" firstAttribute="centerY" secondItem="kLa-BF-OXf" secondAttribute="centerY" id="bcO-bV-bHE"/>
-                        <constraint firstItem="xAS-dW-FbQ" firstAttribute="centerX" secondItem="kLa-BF-OXf" secondAttribute="centerX" id="ymO-oW-WUA"/>
+                        <constraint firstItem="xAS-dW-FbQ" firstAttribute="centerY" secondItem="kLa-BF-OXf" secondAttribute="centerY" id="FSv-SQ-aJG"/>
+                        <constraint firstItem="xAS-dW-FbQ" firstAttribute="leading" secondItem="kLa-BF-OXf" secondAttribute="leading" constant="8" id="NVT-bf-mIy"/>
+                        <constraint firstAttribute="trailing" secondItem="xAS-dW-FbQ" secondAttribute="trailing" constant="8" id="g0n-g5-5VQ"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="aFs-XB-6bJ">

@@ -18,6 +18,14 @@ let headers = [
 
 class NetworkManager {
 
+    class func networkActivityIndicatorVisible() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+
+    class func networkActivityIndicatorNotVisible() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
+
     class func getTrendingMoviesFromAPI(success: ([AnyObject] -> Void), failure: (ErrorType -> Void)) {
 
         let urlString = APIKeys.baseUrl + Methods.Movie.trending

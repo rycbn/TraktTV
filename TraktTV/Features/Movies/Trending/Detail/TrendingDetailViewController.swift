@@ -14,7 +14,7 @@ class TrendingDetailViewController: UITableViewController {
 
     lazy var trendingDetailDataManager = TrendingDetailDataManager()
     var model: TrendingMovie!
-
+    
     @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var trendingDetailDataProvider: TrendingDetailDataProvider!
     @IBOutlet weak var ratingView: UIView!
@@ -62,6 +62,7 @@ extension TrendingDetailViewController {
 
     func configureData() {
         if isNetworkReachableOrHasCellularCoverage() {
+            NetworkManager.networkActivityIndicatorVisible()
             loadingMovieCastCrew()
         } else {
             displayNetworkAlert()
@@ -90,6 +91,7 @@ extension TrendingDetailViewController: TrendingDetailDataManagerDelegate {
         trendingDetailDataProvider?.trendingDetailDataManager?.crewLists = crew
         trendingDetailDataProvider?.tableView = tableView
         tableView.reloadData()
+        NetworkManager.networkActivityIndicatorNotVisible()
     }
 
     func ApiError() {
