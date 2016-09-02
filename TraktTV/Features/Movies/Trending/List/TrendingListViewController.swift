@@ -21,9 +21,9 @@ class TrendingListViewController: UIViewController {
 
     @IBAction func refresh(sender: UIBarButtonItem) {
         if isNetworkReachableOrHasCellularCoverage() {
-            displayNetworkAlert()
-        } else {
             configureData()
+        } else {
+            displayNetworkAlert()
         }
     }
 
@@ -110,7 +110,7 @@ extension TrendingListViewController: TrendingListDataManagerDelegate {
         NetworkManager.networkActivityIndicatorNotVisible()
     }
     
-    func ApiError() {
+    func apiError() {
         displayApiErrorView()
     }
 }

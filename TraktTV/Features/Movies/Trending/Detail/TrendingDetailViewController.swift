@@ -96,7 +96,7 @@ extension TrendingDetailViewController: TrendingDetailDataManagerDelegate {
         NetworkManager.networkActivityIndicatorNotVisible()
     }
 
-    func ApiError() {
+    func apiError() {
         displayApiAlert()
     }
 }

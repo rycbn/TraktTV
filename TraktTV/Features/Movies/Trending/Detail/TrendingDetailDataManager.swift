@@ -8,9 +8,9 @@
 
 import Foundation
 
-protocol TrendingDetailDataManagerDelegate {
+protocol TrendingDetailDataManagerDelegate: Errorable {
     func foundAll(cast: [TrendingCast], crew: [TrendingCrew])
-    func ApiError()
+    func apiError()
 }
 
 class TrendingDetailDataManager {
@@ -23,7 +23,7 @@ class TrendingDetailDataManager {
         NetworkManager.getCastAndCrewFromAPI(slug, success: { [weak self] (results) in
             self?.populateMovieCastCrewFromJSON(results)
             }, failure: { _ in
-            self.delegate?.ApiError()
+            self.delegate?.apiError()
         })
     }
 

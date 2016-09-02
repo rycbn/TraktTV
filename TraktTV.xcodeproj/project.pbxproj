@@ -50,6 +50,7 @@
 		5E6DDE9F1D6AFD6A007CE4BC /* TrendingCrewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6DDE9E1D6AFD6A007CE4BC /* TrendingCrewTests.swift */; };
 		5E6DDEA11D6B0173007CE4BC /* TrendingListCollectionViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6DDEA01D6B0173007CE4BC /* TrendingListCollectionViewCellTests.swift */; };
 		5E6DDEA31D6B0684007CE4BC /* StoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6DDEA21D6B0684007CE4BC /* StoryboardTests.swift */; };
+		5ECE8DB01D79A0FF0056C32B /* Errorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE8DAF1D79A0FF0056C32B /* Errorable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		5E6DDE9E1D6AFD6A007CE4BC /* TrendingCrewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingCrewTests.swift; sourceTree = "<group>"; };
 		5E6DDEA01D6B0173007CE4BC /* TrendingListCollectionViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingListCollectionViewCellTests.swift; sourceTree = "<group>"; };
 		5E6DDEA21D6B0684007CE4BC /* StoryboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardTests.swift; sourceTree = "<group>"; };
+		5ECE8DAF1D79A0FF0056C32B /* Errorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errorable.swift; sourceTree = "<group>"; };
 		6E9A54E1261E5D1B716B6C72 /* Pods_TraktTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TraktTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB70C94282DE877A11A2AA60 /* Pods-TraktTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraktTV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TraktTV/Pods-TraktTV.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				5E6DDE4D1D6830F7007CE4BC /* Mapping.swift */,
+				5ECE8DAF1D79A0FF0056C32B /* Errorable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				5E6DDE751D68C1F6007CE4BC /* Crew.swift in Sources */,
 				5E6DDE471D6827A4007CE4BC /* Constant.swift in Sources */,
 				5E6DDE561D683F70007CE4BC /* Utilities.swift in Sources */,
+				5ECE8DB01D79A0FF0056C32B /* Errorable.swift in Sources */,
 				5E6DDE981D6AC5E9007CE4BC /* NetworkDownloader.swift in Sources */,
 				5E6DDE771D68C690007CE4BC /* TrendingDetailTableViewCell.swift in Sources */,
 				5E6DDE3A1D681C54007CE4BC /* TrendingListDataManager.swift in Sources */,

@@ -8,9 +8,9 @@
 
 import Foundation
 
-protocol TrendingListDataManagerDelegate {
+protocol TrendingListDataManagerDelegate: Errorable {
     func foundAll(data: [TrendingMovie])
-    func ApiError()
+    func apiError()
 }
 
 class TrendingListDataManager {
@@ -22,7 +22,7 @@ class TrendingListDataManager {
         NetworkManager.getTrendingMoviesFromAPI({ [weak self] (results) in
             self?.populateTrendingMovieFromJSON(results)
             }, failure: { _ in
-            self.delegate?.ApiError()
+            self.delegate?.apiError()
         })
     }
     
