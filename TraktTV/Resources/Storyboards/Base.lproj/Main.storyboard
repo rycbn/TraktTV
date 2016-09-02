@@ -353,6 +353,7 @@
                     </tableView>
                     <connections>
                         <outlet property="blurView" destination="a2X-pq-RW2" id="A5m-77-hei"/>
+                        <outlet property="containerView" destination="y57-e2-E0N" id="UuK-i8-U11"/>
                         <outlet property="genresTextLabel" destination="2IV-3s-H6x" id="yp6-NP-Fny"/>
                         <outlet property="overviewTextLabel" destination="dod-Ir-8sh" id="Xr7-gq-sqn"/>
                         <outlet property="posterImageView" destination="kBl-x7-9ys" id="SYc-J1-8Vn"/>

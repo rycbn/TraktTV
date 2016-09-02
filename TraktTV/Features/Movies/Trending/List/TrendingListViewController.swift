@@ -20,7 +20,11 @@ class TrendingListViewController: UIViewController {
     @IBOutlet weak var trendingListDataProvider: TrendingListDataProvider!
 
     @IBAction func refresh(sender: UIBarButtonItem) {
-        configureData()
+        if isNetworkReachableOrHasCellularCoverage() {
+            displayNetworkAlert()
+        } else {
+            configureData()
+        }
     }
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -84,6 +88,11 @@ extension TrendingListViewController {
         collectionView.dataSource = trendingListDataProvider
         collectionView.delegate = trendingListDataProvider
     }
+
+    func displayNetworkAlert() {
+        displayAlertWithTitle(Translation.networkErrorTitle, message: Translation.networkErrorMessage, viewController: self)
+    }
+
 }
 // MARK:- TrendingListDataManagerDelegate
 extension TrendingListViewController: TrendingListDataManagerDelegate {

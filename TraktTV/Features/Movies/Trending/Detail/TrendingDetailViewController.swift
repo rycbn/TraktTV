@@ -14,11 +14,13 @@ class TrendingDetailViewController: UITableViewController {
 
     lazy var trendingDetailDataManager = TrendingDetailDataManager()
     var model: TrendingMovie!
-    
+
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var trendingDetailDataProvider: TrendingDetailDataProvider!
     @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var blurView: UIView!
+
     @IBOutlet weak var posterImageView: UIImageView! {
         didSet {
             posterImageView?.imageFromUrl(self.model.poster)
