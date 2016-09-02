@@ -61,6 +61,7 @@ extension TrendingListViewController {
     }
 
     func displayApiErrorView() {
+        NetworkManager.networkActivityIndicatorNotVisible()
         navigationItem.rightBarButtonItem?.enabled = true
         self.title = Translation.apiErrorTitle
         view = apiErrorView
